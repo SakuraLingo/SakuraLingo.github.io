@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/x-icon" href="lockicon.png">
+    <link rel="icon" type="image/x-icon" href="lockicon.png">
     <title>Şifre Girişi</title>
     <style>
         body {
@@ -13,12 +13,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('arkaplan.jpg'); /* Arkaplan resmi */
+            background-image: url('arkaplan.jpg');
             background-size: cover;
         }
 
         #girisKutusu {
-            background-color: rgba(255, 255, 255, 0.8); /* Şeffaf bir arka plan */
+            background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid #ccc;
             border-radius: 15px;
             padding: 20px;
@@ -28,7 +28,7 @@
         #sifreMetni {
             font-size: 18px;
             margin-bottom: 10px;
-            font-family: "Techno Sans", sans-serif; /* Font ayarı */
+            font-family: "Techno Sans", sans-serif;
         }
 
         #sifreInput {
@@ -37,8 +37,8 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 10px;
-            font-family: "Techno Sans", sans-serif; /* Font ayarı */
-            max-width: 300px; /* Maksimum genişlik ayarı */
+            font-family: "Techno Sans", sans-serif;
+            max-width: 300px;
         }
 
         #kontrolButon {
@@ -49,18 +49,29 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+
+        /* Göz simgesi için stil */
+        .gizli {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .gizli.goster {
+            transform: rotate(180deg);
+			
+        }
     </style>
 </head>
 <body>
     <div id="girisKutusu">
         <div id="sifreMetni">Lütfen şifreyi girin</div>
         <input type="password" id="sifreInput" placeholder="Şifre">
+        <span id="gizleGoster" class="gizli">👁</span>
         <button id="kontrolButon">Şifreyi Kontrol Et</button>
     </div>
 
     <script>
-	
-	document.addEventListener("contextmenu", function(e) {
+        document.addEventListener("contextmenu", function(e) {
             e.preventDefault();
         });
 
@@ -69,22 +80,30 @@
                 e.preventDefault();
             }
         });
-	
+
         const sifreInput = document.getElementById("sifreInput");
         const kontrolButon = document.getElementById("kontrolButon");
+        const gizleGoster = document.getElementById("gizleGoster");
 
-// Enter tuşuna basıldığında, "kontrolButon" butonunu tıklamış gibi davran
+        gizleGoster.addEventListener("click", function() {
+            if (sifreInput.type === "password") {
+                sifreInput.type = "text";
+                gizleGoster.classList.add("goster");
+            } else {
+                sifreInput.type = "password";
+                gizleGoster.classList.remove("goster");
+            }
+        });
+
         sifreInput.addEventListener("keyup", function(event) {
             if (event.key === "Enter") {
                 kontrolButon.click();
             }
         });
-// Şifre kısmı
 
         kontrolButon.addEventListener("click", function() {
             if (sifreInput.value === "Bulent2023") {
-                // Şifre doğru ise, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz.
-				sessionStorage.setItem("authenticated", "true");
+                sessionStorage.setItem("authenticated", "true");
                 window.location.href = "index1.html";
             } else {
                 alert("Yanlış şifre! Lütfen doğru şifreyi girin.");
