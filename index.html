@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="lockicon.png">
+    <title>Şifre Girişi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('arkaplan.jpg'); /* Arkaplan resmi */
+            background-size: cover;
+        }
+
+        #girisKutusu {
+            background-color: rgba(255, 255, 255, 0.8); /* Şeffaf bir arka plan */
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #sifreMetni {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-family: "Techno Sans", sans-serif; /* Font ayarı */
+        }
+
+        #sifreInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-family: "Techno Sans", sans-serif; /* Font ayarı */
+            max-width: 300px; /* Maksimum genişlik ayarı */
+        }
+
+        #kontrolButon {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="girisKutusu">
+        <div id="sifreMetni">Lütfen şifreyi girin</div>
+        <input type="password" id="sifreInput" placeholder="Şifre">
+        <button id="kontrolButon">Şifreyi Kontrol Et</button>
+    </div>
+
+    <script>
+	
+	document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "F12" || e.key === "F5") {
+                e.preventDefault();
+            }
+        });
+	
+        const sifreInput = document.getElementById("sifreInput");
+        const kontrolButon = document.getElementById("kontrolButon");
+
+// Enter tuşuna basıldığında, "kontrolButon" butonunu tıklamış gibi davran
+        sifreInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                kontrolButon.click();
+            }
+        });
+// Şifre kısmı
+
+        kontrolButon.addEventListener("click", function() {
+            if (sifreInput.value === "Bulent2023") {
+                // Şifre doğru ise, kullanıcıyı başka bir sayfaya yönlendirebilirsiniz.
+				sessionStorage.setItem("authenticated", "true");
+                window.location.href = "index1.html";
+            } else {
+                alert("Yanlış şifre! Lütfen doğru şifreyi girin.");
+            }
+        });
+    </script>
+</body>
+</html>

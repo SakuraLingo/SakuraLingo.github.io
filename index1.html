@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+	<link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+<body>
+    <script>
+
+        const authenticated = sessionStorage.getItem("authenticated");
+        
+        if (authenticated !== "true") {
+
+            window.location.href = "index.html";
+        }
+    </script>
+    
+    <h1>Ana Sayfa İçeriği</h1>
+    
+    <p>Bu, şifresiz ana sayfa içeriğidir. / Site tam bitmemiştir.</p>
+</body>
+</html>
