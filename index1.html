@@ -102,6 +102,15 @@
     </div>
 
     <script>
+	// authenticated değerini "false" olarak ayarla
+        
+		 const authenticated = sessionStorage.getItem("authenticated");
+        
+        if (authenticated !== "true") {
+            // authenticated değeri false ise, giriş sayfasına geri yönlendir
+            window.location.href = "index.html"; // Giriş sayfasının URL'sini buraya ekleyin
+        }
+		sessionStorage.setItem("authenticated", "false");
         function ingilizceSec() {
             document.querySelector(".sakura-lingo").textContent = "İngilizce";
             document.querySelector(".sag-buton").style.display = "none";
