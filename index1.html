@@ -210,6 +210,20 @@
             transform: translateX(-50%); /* Yatayda merkezlemek için */
         }
 
+	.link6 {
+            font-family: 'Techno Sans', sans-serif; /* Fontu ayarla */
+            font-size: 25px; /* Metin boyutunu ayarlayabilirsiniz */
+            font-weight: bold; /* Kalın metin stilini kullanabilirsiniz */
+            text-transform: none; /* Metni olduğu gibi yazdırmak için */
+            color: blue; /* Metin rengini beyaz yap */
+            text-align: center; /* Metni ortalamak için */
+            position: absolute;
+            left: 80%;
+            top: 190px; /* Yukarıdan boşluk ayarlayabilirsiniz */
+            transform: translateX(-50%); /* Yatayda merkezlemek için */
+	}
+
+
         /* Butonun üzerine gelindiğinde rengini değiştir */
         .sol-buton:hover, .sag-buton:hover, .ucuncu-buton:hover {
             background-color: rgba(0, 123, 255, 1); /* Mavi rengin tam saydam hali */
@@ -221,8 +235,8 @@
 <body>
 
     <div class="yarı-saydam-dikdörtgen">
-        <button class="sol-buton" onclick="ingilizceSec()">İngilizce</button>
-        <button class="sag-buton" onclick="digerSec()">Diğer</button>
+        <button class="sol-buton" onclick="ingilizceSec()">School</button>
+        <button class="sag-buton" onclick="digerSec()">Adult</button>
         <button class="ucuncu-buton" onclick="ucuncuSec()"><</button>
         <div class="orta-metin">yada</div>
         <div class="sakura-lingo">SakuraLingo</div>
@@ -235,6 +249,8 @@
 		<div class="link4" onclick="openLink6()"></div>
 		<div class="link5" onclick="openLink7()"></div>
 		<div class="kahoot" onclick="openLink8()"></div>
+<div class="link6" onclick="openLink9()"></div>
+
 		
         <!-- Dikdörtgenin içeriği buraya gelecek -->
 		
@@ -272,6 +288,8 @@
 			document.querySelector(".link4").textContent = "Kartlar";
 			document.querySelector(".link5").textContent = "TestENG";
 			document.querySelector(".kahoot").textContent = "Kahoot";
+document.querySelector(".link6").textContent = "A-2 Key";
+
         }
 
         function ucuncuSec() {
@@ -289,6 +307,8 @@
 			document.querySelector(".link4").textContent = "";
 			document.querySelector(".link5").textContent = "";
 			document.querySelector(".kahoot").textContent = "";
+document.querySelector(".link6").textContent = "";
+
         }
 		function openLink() {
             var win = window.open("https://www.ingilizceciyiz.com/8-sinif-ingilizce-3-unite-kitap-sunumu-ozel-yayin/", '_blank');
@@ -326,6 +346,12 @@
             var win = window.open("https://kahoot.com/", '_blank');
             win.focus();
         }
+	function openLink9() {
+            var win = window.open("https://test-english.com/exams/a2-key/a2-key-exam-1-speaking/2/", '_blank');
+            win.focus();
+	}
+
+
     </script>
 </body>
 </html>
