@@ -222,7 +222,16 @@
             top: 190px; /* Yukarıdan boşluk ayarlayabilirsiniz */
             transform: translateX(-50%); /* Yatayda merkezlemek için */
 	}
-
+.footer-box {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+}
 
         /* Butonun üzerine gelindiğinde rengini değiştir */
         .sol-buton:hover, .sag-buton:hover, .ucuncu-buton:hover {
@@ -233,6 +242,10 @@
 	<link rel="icon" type="image/x-icon" href="favicon.png">
 </head>
 <body>
+ <div class="footer-box">
+        Designed by kulyusuf 8/G 2023-2024
+ </div>
+
 
     <div class="yarı-saydam-dikdörtgen">
         <button class="sol-buton" onclick="ingilizceSec()">School</button>
